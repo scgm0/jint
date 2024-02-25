@@ -128,6 +128,15 @@ namespace Jint
         }
 
         /// <summary>
+        /// 
+        /// </summary>
+        public static Options SetBuildCallStackHandler(this Options options, Options.BuildCallStackDelegate buildCallStackHandler)
+        {
+            options.Interop.BuildCallStackHandler = buildCallStackHandler;
+            return options;
+        }
+
+        /// <summary>
         /// Sets the type converter to use.
         /// </summary>
         public static Options SetTypeConverter(this Options options, Func<Engine, ITypeConverter> typeConverterFactory)

@@ -2,6 +2,8 @@
 using System.Globalization;
 using System.Linq;
 using System.Reflection;
+using System.Text;
+using Esprima;
 using Jint.Native;
 using Jint.Native.Object;
 using Jint.Runtime;
@@ -26,6 +28,8 @@ namespace Jint
         public delegate ObjectInstance? WrapObjectDelegate(Engine engine, object target, Type? type);
 
         public delegate bool ExceptionHandlerDelegate(Exception exception);
+
+        public delegate string? BuildCallStackDelegate(string shortDescription, Location location, List<string>? arguments);
 
         /// <summary>
         /// Execution constraints for the engine.
@@ -292,6 +296,11 @@ namespace Jint
             /// change the behavior.
             /// </summary>
             public WrapObjectDelegate WrapObjectHandler { get; set; } = static (engine, target, type) => new ObjectWrapper(engine, target, type);
+
+            /// <summary>
+            ///
+            /// </summary>
+            public BuildCallStackDelegate BuildCallStackHandler { get; set; } = static (string description, Location location, List<string>? arguments) => null;
 
             /// <summary>
             ///
