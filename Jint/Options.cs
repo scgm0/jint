@@ -298,7 +298,9 @@ namespace Jint
             public WrapObjectDelegate WrapObjectHandler { get; set; } = static (engine, target, type) => new ObjectWrapper(engine, target, type);
 
             /// <summary>
-            ///
+            /// The handler used to build stack traces. Changing this enables mapping
+            /// stack traces to code different from the code being executed, eg. when
+            /// executing code traspiled from TypeScript.
             /// </summary>
             public BuildCallStackDelegate BuildCallStackHandler { get; set; } = static (string description, Location location, List<string>? arguments) => null;
 

@@ -176,7 +176,7 @@ namespace Jint.Runtime.CallStack
             // stack is one frame behind function-wise when we start to process it from expression level
             var index = _stack._size - 1 - excludeTop;
             var element = index >= 0 ? _stack[index] : (CallStackElement?) null;
-            var shortDescription = element?.ToString() ?? "";
+            var shortDescription = element?.ToString() ?? string.Empty;
 
             AppendLocation(ref builder, shortDescription, location, element, engine);
 
@@ -186,7 +186,7 @@ namespace Jint.Runtime.CallStack
             while (index >= -1)
             {
                 element = index >= 0 ? _stack[index] : null;
-                shortDescription = element?.ToString() ?? "";
+                shortDescription = element?.ToString() ?? string.Empty;
 
                 AppendLocation(ref builder, shortDescription, location, element, engine);
 
