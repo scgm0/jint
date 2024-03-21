@@ -631,6 +631,7 @@ public static class JsValueExtensions
     {
         if (value is JsPromise promise)
         {
+            promise.Engine.RunAvailableContinuations();
             switch (promise.State)
             {
                 case PromiseState.Pending:
